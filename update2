@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Who Got Next?</title>
+    <style>
+        .button {
+            width: 125px;
+            height: 250px;
+            font-size: 24px;
+            margin: 20px;
+        }
+        .button-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+        .circle {
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            margin-top: 5px;
+            border: 2px solid black; 
+            background-color: green;
+        }
+        .hidden-window {
+            display: none; /* Initially hidden */
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 400px;
+            height: 250px;
+            background-color: white;
+            border: 2px solid black;
+            z-index: 9999; /* Ensure it appears above other content */
+            padding: 20px;
+        }
+        .green { background-color: green; }
+        .red { background-color: red; }
+        .yellow { background-color: yellow; }
+        .grey { background-color: grey;}
+    </style>
+    <script>
+        // Define an array of colors
+        var colors = ["green", "green", "green", "green", "green", "green"];
+
+        // Define an array to store players ahead for each court
+        var playersAhead = [0, 0, 0, 0, 0, 0];
+
+        // Function to change the color of the circle
+        function changeColor(index) {
+            if (playersAhead[index] == 1) {
+                colors[index] = "yellow";
+            } else {
+                colors[index] = "orange";
+            } 
+            document.getElementById('circleDisplay' + index).className = "circle " + colors[index];
+        }
+
+        // Function to increment players ahead
+        function incrementPlayersAhead(index) {
+            playersAhead[index]++;
+            changeColor(index);
+            document.getElementById('playersAhead' + index).innerText = "Players Ahead: " + playersAhead[index];
+        }
+
+        // Function to toggle the visibility of the hidden window associated with the button
+        function toggleHiddenWindow(buttonId) {
+            var hiddenWindow = document.getElementById("hiddenWindow" + buttonId);
+            if (hiddenWindow.style.display === "none") {
+                hiddenWindow.style.display = "block"; // Show the window
+            } else {
+                hiddenWindow.style.display = "none"; // Hide the window
+            }
+        }
+    </script>
+</head>
+<body>
+
+<!-- Display the circles -->
+<div class="button-container">
+    <div>
+        <div id="circleDisplay0" class="circle"></div>
+        <button class="button" onclick="toggleHiddenWindow(0)">Court 1</button>
+    </div>
+    <div>
+        <div id="circleDisplay1" class="circle"></div>
+        <button class="button" onclick="toggleHiddenWindow(1)">Court 2</button>
+    </div>
+    <div>
+        <div id="circleDisplay2" class="circle"></div>
+        <button class="button" onclick="toggleHiddenWindow(2)">Court 3</button>
+    </div>
+    <div>
+        <div id="circleDisplay3" class="circle"></div>
+        <button class="button" onclick="toggleHiddenWindow(3)">Court 4</button>
+    </div>
+    <div>
+        <div id="circleDisplay4" class="circle"></div>
+        <button class="button" onclick="toggleHiddenWindow(4)">Court 5</button>
+    </div>
+    <div>
+        <div id="circleDisplay5" class="circle"></div>
+        <button class="button" onclick="toggleHiddenWindow(5)">Court 6</button>
+    </div>
+</div>
+
+<!-- Hidden windows -->
+<div id="hiddenWindow0" class="hidden-window">
+    <h2>Court 1</h2>
+    <p id="playersAhead0">Players Ahead: 0</p>
+    <button onclick="incrementPlayersAhead(0)">Increment Players</button>
+</div>
+
+<div id="hiddenWindow1" class="hidden-window">
+    <h2>Court 2</h2>
+    <p id="playersAhead1">Players Ahead: 0</p>
+    <button onclick="incrementPlayersAhead(1)">Increment Players</button>
+</div>
+
+<div id="hiddenWindow2" class="hidden-window">
+    <h2>Court 3</h2>
+    <p id="playersAhead2">Players Ahead: 0</p>
+    <button onclick="incrementPlayersAhead(2)">Increment Players</button>
+</div>
+
+<div id="hiddenWindow3" class="hidden-window">
+    <h2>Court 4</h2>
+    <p id="playersAhead3">Players Ahead: 0</p>
+    <button onclick="incrementPlayersAhead(3)">Increment Players</button>
+</div>
+
+<div id="hiddenWindow4" class="hidden-window">
+    <h2>Court 5</h2>
+    <p id="playersAhead4">Players Ahead: 0</p>
+    <button onclick="incrementPlayersAhead(4)">Increment Players</button>
+</div>
+
+<div id="hiddenWindow5" class="hidden-window">
+    <h2>Court 6</h2>
+    <p id="playersAhead5">Players Ahead: 0</p>
+    <button onclick="incrementPlayersAhead(5)">Increment Players</button>
+</div>
+
+</body>
+</html>
