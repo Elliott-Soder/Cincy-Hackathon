@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Office Room Simulation</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f0f0;
+            margin: 0;
+            padding: 0;
+            text-align: center; 
+        }
+        h1 {
+            color: #333;
+        }
+        label {
+            color: #333;
+            display: block; 
+            margin-bottom: 5px;
+        }
+        button {
+            background-color: #333;
+            color: #fff;
+            padding: 10px 20px;
+            border: none;
+            cursor: pointer;
+            margin: 5px;
+        }
+        button:disabled {
+            background-color: #ccc;
+        }
+        #roomSchedules, #powerStatus {
+            background-color: #fff;
+            padding: 10px;
+            margin: 10px auto; 
+            text-align: left; 
+            width: 60%; 
+        }
+        p {
+            color: #333;
+        }
+    </style>
+</head>
+<body>
+    <h1 style="color:darkgreen">Power Bank</h1>
+
+    <!-- Input for the number of rooms -->
+    <label for="numRooms">Number of Office Rooms:</label>
+    <input type="number" id="numRooms" min="1" value="3">
+    <button onclick="updateRoomSchedules()">Update Schedules</button>
+
+    <div id="roomSchedules"></div>
+
+    <button id="startButton" onclick="startSimulation()">Start Simulation</button>
+    <button id="pauseButton" onclick="pauseSimulation()" disabled>Pause Simulation</button>
+    <button id="endButton" onclick="endSimulation()" disabled>End Simulation</button>
+
+    <p style="color: darkred;">Clock Time: <span id="clockTime">00:00</span></p>
+    <div id="powerStatus"></div>
+
+    <script>
+        let acceleratedClockInterval;
+        let isRunning = false;
+
+        let numRooms = 3; // Default # of office roms
+        let roomPowerStatus = Array(numRooms).fill("off");
+        let roomSchedules = {
+            1: ["08:00", "17:00"],
+            2: ["09:00", "18:00"],
+            3: ["07:30", "16:30"]
+        };
+
+        const numRoomsInput = document.getElementById("numRooms");
+        const roomSchedulesDisplay = document.getElementById("roomSchedules");
+        const startButton = document.getElementById("startButton");
+        const pauseButton = document.getElementById("pauseButton");
+        const endButton = document.getElementById("endButton");
+        const clockTime = document.getElementById("clockTime");
+        const powerStatus = document.getElementById("powerStatus");
+
+        // Display initial room schedules
+        updateRoomSchedules();
+
+        function updateRoomSchedules() {
+            numRooms = parseInt(numRoomsInput.value, 10);
+            roomSchedules = {}; 
+
+            // Generate default schedules
+            for (let room = 1; room <= numRooms; room++) {
+                roomSchedules[room] = ["08:00", "17:00"];
+            }
+
+            let html = "<h3>Office Room Schedules:</h3>";
+            for (let room = 1; room <= numRooms; room++) {
+                html += `
+                    <div>
+                        <label for="room${room}">Room ${room} Schedule:</label>
+                        <input type="time" id="room${room}Start" value="${roomSchedules[room][0]}">
+                        <span>to</span>
+                        <input type="time" id="room${room}End" value="${roomSchedules[room][1]}">
+                    </div>
+                `;
+            }
+
+            roomSchedulesDisplay.innerHTML = html;
+        }
+
+        function startSimulation() {
+    if (!isRunning) {
+        isRunning = true;
+        startButton.disabled = true;
+        pauseButton.disabled = false;
+        endButton.disabled = false;
+
+        acceleratedClockInterval = setInterval(function () {
+            updateClock();
+            updatePowerStatus();
+        }, 1000);
+    }
+}
+
+function pauseSimulation() {
+    if (isRunning) {
+        isRunning = false;
+        startButton.disabled = false;
+        pauseButton.disabled = true;
+        endButton.disabled = false;
+
+        clearInterval(acceleratedClockInterval);
+    }
+}
+
+function endSimulation() {
+    isRunning = false;
+    startButton.disabled = false;
+    pauseButton.disabled = true;
+    endButton.disabled = true;
+
+    // Reset clock and room power
+    clearInterval(acceleratedClockInterval);
+    clockTime.textContent = "00:00";
+    roomPowerStatus = Array(numRooms).fill("off");
+    updatePowerStatus();
+}
+
+function updateClock() {
+    const currentClockTime = clockTime.textContent;
+    const [hours, minutes] = currentClockTime.split(":");
+    let newHours = parseInt(hours, 10);
+    let newMinutes = parseInt(minutes, 10) + 1;
+
+    if (newMinutes === 60) {
+        newMinutes = 0;
+        newHours += 1;
+    }
+
+    newHours = newHours % 24; // Reset to 00 after 23
+    newMinutes = newMinutes.toString().padStart(2, "0");
+
+    clockTime.textContent = `${newHours}:${newMinutes}`;
+}
+
+function updatePowerStatus() {
+    powerStatus.innerHTML = "Power Status:<br>";
+    for (let room = 1; room <= numRooms; room++) {
+        powerStatus.innerHTML += `Room ${room}: ${roomPowerStatus[room - 1]}<br>`;
+    }
+}
+    </script>
+</body>
+</html>
