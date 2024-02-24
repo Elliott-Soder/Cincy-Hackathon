@@ -38,9 +38,10 @@
             padding: 20px;
         }
         .green { background-color: green; }
-        .red { background-color: red; }
+        .blue { background-color: blue; }
         .yellow { background-color: yellow; }
         .grey { background-color: grey;}
+        
     </style>
     <script>
         // Define an array of colors
@@ -53,9 +54,11 @@
         function changeColor(index) {
             if (playersAhead[index] == 1) {
                 colors[index] = "yellow";
+            } else if (playersAhead[index] >= 2) {
+                colors[index] = "blue";
             } else {
-                colors[index] = "orange";
-            } 
+                colors[index] = "green";
+            }
             document.getElementById('circleDisplay' + index).className = "circle " + colors[index];
         }
 
@@ -75,6 +78,14 @@
                 hiddenWindow.style.display = "none"; // Hide the window
             }
         }
+
+        // Clears Current Queue
+        function clearQueue(index){
+            playersAhead[index] = 0;
+            document.getElementById('playersAhead' + index).innerText = "Players Ahead: " + playersAhead[index];
+            changeColor(index);
+        }
+
     </script>
 </head>
 <body>
@@ -112,36 +123,42 @@
     <h2>Court 1</h2>
     <p id="playersAhead0">Players Ahead: 0</p>
     <button onclick="incrementPlayersAhead(0)">Increment Players</button>
+    <button onclick="clearQueue(0)">Clear</button>
 </div>
 
 <div id="hiddenWindow1" class="hidden-window">
     <h2>Court 2</h2>
     <p id="playersAhead1">Players Ahead: 0</p>
     <button onclick="incrementPlayersAhead(1)">Increment Players</button>
+    <button onclick="clearQueue(1)">Clear</button>
 </div>
 
 <div id="hiddenWindow2" class="hidden-window">
     <h2>Court 3</h2>
     <p id="playersAhead2">Players Ahead: 0</p>
     <button onclick="incrementPlayersAhead(2)">Increment Players</button>
+    <button onclick="clearQueue(2)">Clear</button>
 </div>
 
 <div id="hiddenWindow3" class="hidden-window">
     <h2>Court 4</h2>
     <p id="playersAhead3">Players Ahead: 0</p>
     <button onclick="incrementPlayersAhead(3)">Increment Players</button>
+    <button onclick="clearQueue(3)">Clear</button>
 </div>
 
 <div id="hiddenWindow4" class="hidden-window">
     <h2>Court 5</h2>
     <p id="playersAhead4">Players Ahead: 0</p>
     <button onclick="incrementPlayersAhead(4)">Increment Players</button>
+    <button onclick="clearQueue(4)">Clear</button>
 </div>
 
 <div id="hiddenWindow5" class="hidden-window">
     <h2>Court 6</h2>
     <p id="playersAhead5">Players Ahead: 0</p>
     <button onclick="incrementPlayersAhead(5)">Increment Players</button>
+    <button onclick="clearQueue(5)">Clear</button>
 </div>
 
 </body>
