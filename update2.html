@@ -13,7 +13,7 @@
             margin: 25px;
             margin-top: 5px;
             font-family: Garamond, sans-serif;
-            background-image: url(bball.jpg); /* Replace 'basketball_court.png' with your actual image file */
+            background-image: url(bball.jpg); 
             background-size: cover;
             color: black;
             text-align: center;
@@ -39,16 +39,16 @@
             background-color: green;
         }
         .hidden-window {
-            display: none; /* Initially hidden */
+            display: none;
             position: fixed;
             top: 50%;
             left: 50%;
             transform: translate(-50%, -50%);
             width: 200px;
-            height: 175px;
+            height: 185px;
             background-color: white;
             border: 2px solid black;
-            z-index: 9999; /* Ensure it appears above other content */
+            z-index: 9999; 
             padding: 20px;
             font-family: Garamond, sans-serif;
         }
@@ -63,6 +63,22 @@
             font-size: 40px;
             font-weight: bold;
             margin-bottom: 10px;
+        }
+
+        h2 {
+            
+            font-family: Garamond, sans-serif;
+            font-size: 30px;
+            margin-top: 1px;
+            margin-bottom: 10px;
+
+        }
+
+        h3{
+
+            margin-top: 0px;
+            margin-left: 180px;
+            margin-bottom: 0px;
         }
         
     </style>
@@ -153,6 +169,9 @@
 
 <!-- Hidden windows -->
 <div id="hiddenWindow0" class="hidden-window">
+    <h3>
+        <button onclick="toggleHiddenWindow(0)">X</button>
+    </h3>
     <h2>Queue A:</h2>
     <p id="playersAhead0">Players Ahead: 0</p>
     <button onclick="incrementPlayersAhead(0)" style="margin-bottom: 7px;">Increment Players</button>
@@ -160,11 +179,14 @@
         <button onclick="clearQueue(0)" style="margin-bottom: 7px;">Clear</button>
     </div>
     <div>
-        <button onclick="availability(0)">Close</button>
+        <button onclick="availability(0)">Close Court</button>
     </div>
 </div>
 
 <div id="hiddenWindow1" class="hidden-window">
+    <h3>
+        <button onclick="toggleHiddenWindow(1)">X</button>
+    </h3>
     <h2>Queue 2:</h2>
     <p id="playersAhead1">Players Ahead: 0</p>
     <button onclick="incrementPlayersAhead(1)" style="margin-bottom: 7px;">Increment Players</button>
@@ -172,11 +194,14 @@
         <button onclick="clearQueue(1)" style="margin-bottom: 7px;">Clear</button>
     </div>
     <div>
-        <button onclick="availability(1)">Close</button>
+        <button onclick="availability(1)">Close Court</button>
     </div>
 </div>
 
 <div id="hiddenWindow2" class="hidden-window">
+    <h3>
+        <button onclick="toggleHiddenWindow(2)">X</button>
+    </h3>
     <h2>Queue 3:</h2>
     <p id="playersAhead2">Players Ahead: 0</p>
     <button onclick="incrementPlayersAhead(2)" style="margin-bottom: 7px;">Increment Players</button>
@@ -184,11 +209,14 @@
         <button onclick="clearQueue(2)" style="margin-bottom: 7px;">Clear</button>
     </div>
     <div>
-        <button onclick="availability(2)">Close</button>
+        <button onclick="availability(2)">Close Court</button>
     </div>
 </div>
 
 <div id="hiddenWindow3" class="hidden-window">
+    <h3>
+        <button onclick="toggleHiddenWindow(3)">X</button>
+    </h3>
     <h2>Queue 4:</h2>
     <p id="playersAhead3">Players Ahead: 0</p>
     <button onclick="incrementPlayersAhead(3)" style="margin-bottom: 7px;">Increment Players</button>
@@ -196,11 +224,14 @@
         <button onclick="clearQueue(3)" style="margin-bottom: 7px;">Clear</button>
     </div>
     <div>
-        <button onclick="availability(3)">Close</button>
+        <button onclick="availability(3)">Close Court</button>
     </div>
 </div>
 
 <div id="hiddenWindow4" class="hidden-window">
+    <h3>
+        <button onclick="toggleHiddenWindow(4)">X</button>
+    </h3>
     <h2>Queue 5:</h2>
     <p id="playersAhead4">Players Ahead: 0</p>
     <button onclick="incrementPlayersAhead(4)" style="margin-bottom: 7px;">Increment Players</button>
@@ -208,11 +239,14 @@
         <button onclick="clearQueue(4)" style="margin-bottom: 7px;">Clear</button>
     </div>
     <div>
-        <button onclick="availability(4)">Close</button>
+        <button onclick="availability(4)">Close Court</button>
     </div>
 </div>
 
 <div id="hiddenWindow5" class="hidden-window">
+    <h3>
+        <button onclick="toggleHiddenWindow(5)">X</button>
+    </h3>
     <h2>Queue 6:</h2>
     <p id="playersAhead5">Players Ahead: 0</p>
     <button onclick="incrementPlayersAhead(5)" style="margin-bottom: 7px;">Increment Players</button>
@@ -220,7 +254,7 @@
         <button onclick="clearQueue(5)" style="margin-bottom: 7px;">Clear</button>
     </div>
     <div>
-        <button onclick="availability(5)">Close</button>
+        <button onclick="availability(5)">Close Court</button>
     </div>
 </div>
 
