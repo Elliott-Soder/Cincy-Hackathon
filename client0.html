@@ -47,7 +47,7 @@
             font-family: Garamond, sans-serif;
         }
         .green { background-color: green; }
-        .blue { background-color: blue; }
+        .orangered { background-color: orangered; }
         .yellow { background-color: yellow; }
         .grey { background-color: grey;}
 
@@ -89,10 +89,10 @@
 
         // Function to change the color of the circle
         function changeColor(index) {
-            if (playersAhead[index] <= 5) {
+            if (playersAhead[index] <= 15) {
+                colors[index] = "orangred";
+            } else if (playersAhead[index] > 9) {
                 colors[index] = "yellow";
-            } else if (playersAhead[index] > 5) {
-                colors[index] = "blue";
             } else {
                 colors[index] = "green";
             }
@@ -102,11 +102,11 @@
         
         // Function to add yourself to the queue
         function incrementPlayersAhead(index) {
-            let closeCourtButton = document.getElementById("addPlayer" + index);
-            let openCourtButton = document.getElementById("removePlayer" + index);
+            let addPlayer = document.getElementById("addPlayer" + index);
+            let removePlayer = document.getElementById("removePlayer" + index);
             playersAhead[index]++;
             changeColor(index);
-            document.getElementById('playersAhead' + index).innerText = "Players Ahead: " + playersAhead[index];
+            document.getElementById('playersAhead' + index).innerText = "Players Waiting: " + playersAhead[index];
             if (addPlayer.style.display === "none") {
                 addPlayer.style.display = "inline-block";
                 removePlayer.style.display = "none";
@@ -116,8 +116,10 @@
             }
         }
 
-        // Function to remove yourself fromthe queue
+        // Function to remove yourself from the queue
         function clearQueue(index) {
+            let addPlayer = document.getElementById("addPlayer" + index);
+            let removePlayer = document.getElementById("removePlayer" + index);
             if (addPlayer.style.display === "none") {
                 addPlayer.style.display = "inline-block";
                 removePlayer.style.display = "none";
@@ -127,7 +129,7 @@
             }
             playersAhead[index]--;
             changeColor(index);
-            document.getElementById('playersAhead' + index).innerText = "Players Ahead: " + playersAhead[index];
+            document.getElementById('playersAhead' + index).innerText = "Players Waiting: " + playersAhead[index];
         }
     
 
@@ -202,9 +204,9 @@
         <button onclick="toggleHiddenWindow(0)">X</button>
     </h3>
     <h2>Queue 1</h2>
-    <p id="playersAhead0">Players Ahead: 0</p>
+    <p id="playersAhead0">Players Waiting: 0</p>
     <button id="addPlayer0" onclick="incrementPlayersAhead(0)">Join Queue</button>
-    <button id="removePlayeronclick0" onclick="clearQueue(0)">Leave Queue</button>
+    <button id="removePlayer0" style="display: none;" onclick="clearQueue(0)">Leave Queue</button>
     
 </div>
 
@@ -213,9 +215,9 @@
         <button onclick="toggleHiddenWindow(1)">X</button>
     </h3>
     <h2>Queue 2</h2>
-    <p id="playersAhead1">Players Ahead: 0</p>
+    <p id="playersAhead1">Players Waiting: 0</p>
     <button id="addPlayer1" onclick="incrementPlayersAhead(1)">Join Queue</button>
-    <button id="removePlayer1" onclick="clearQueue(1)">Leave Queue</button>
+    <button id="removePlayer1" style="display: none;" onclick="clearQueue(1)">Leave Queue</button>
 </div>
 
 <div id="hiddenWindow2" class="hidden-window">
@@ -223,9 +225,9 @@
         <button onclick="toggleHiddenWindow(2)">X</button>
     </h3>
     <h2>Queue 3</h2>
-    <p id="playersAhead2">Players Ahead: 0</p>
+    <p id="playersAhead2">Players Waiting: 0</p>
     <button id="addPlayer2" onclick="incrementPlayersAhead(2)">Join Queue</button>
-    <button id="removePlayer2" onclick="clearQueue(2)">Leave Queue</button>
+    <button id="removePlayer2" style="display: none;" onclick="clearQueue(2)">Leave Queue</button>
 </div>
 
 <div id="hiddenWindow3" class="hidden-window">
@@ -233,9 +235,9 @@
         <button onclick="toggleHiddenWindow(3)">X</button>
     </h3>
     <h2>Queue 4</h2>
-    <p id="playersAhead3">Players Ahead: 0</p>
+    <p id="playersAhead3">Players Waiting: 0</p>
     <button id="addPlayer3" onclick="incrementPlayersAhead(3)">Join Queue</button>
-    <button id="removePlayer3" onclick="clearQueue(3)">Leave Queue</button>
+    <button id="removePlayer3" style="display: none;" onclick="clearQueue(3)">Leave Queue</button>
 </div>
 
 <div id="hiddenWindow4" class="hidden-window">
@@ -243,9 +245,9 @@
         <button onclick="toggleHiddenWindow(4)">X</button>
     </h3>
     <h2>Queue 5</h2>
-    <p id="playersAhead4">Players Ahead: 0</p>
+    <p id="playersAhead4">Players Waiting: 0</p>
     <button id="addPlayer4" onclick="incrementPlayersAhead(4)">Join Queue</button>
-    <button id="removePlayer4" onclick="clearQueue(4)">Leave Queue</button>
+    <button id="removePlayer4" style="display: none;" onclick="clearQueue(4)">Leave Queue</button>
 </div>
 
 <div id="hiddenWindow5" class="hidden-window">
@@ -253,9 +255,13 @@
         <button onclick="toggleHiddenWindow(5)">X</button>
     </h3>
     <h2>Queue 6</h2>
-    <p id="playersAhead5">Players Ahead: 0</p>
+    <p id="playersAhead5">Players Waiting: 0</p>
+    <div>
     <button id="addPlayer5" onclick="incrementPlayersAhead(5)">Join Queue</button>
-    <button id="removePlayer5" onclick="clearQueue(5)">Leave Queue</button>
+    </div>
+    <div>
+    <button id="removePlayer5" style="display: none;" onclick="clearQueue(5)">Leave Queue</button>
+    </div> 
 </div>
 <img src="https://th.bing.com/th/id/OIP.UJOqd6XHG9hWs9yZjE73aAAAAA?rs=1&pid=ImgDetMain" alt="Cincinnati" class="center">
 <div class="link"> 
