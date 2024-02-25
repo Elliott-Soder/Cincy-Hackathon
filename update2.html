@@ -13,7 +13,8 @@
             margin: 15px;
             margin-top: 5px;
             font-family: Garamond, sans-serif;
-            background-image: url(bball.jpg); 
+            background-image: url(https://t3.ftcdn.net/jpg/04/14/41/52/360_F_414415250_SSetMKFnyxAtHmfAyYcuI4xrhN6915gJ.jpg); 
+            background-position: center;
             background-size: cover;
             color: black;
             text-align: center;
@@ -39,7 +40,7 @@
             border-radius: 70%;
             margin-top: 5px;
             border: 2px solid black; 
-            background-color: green;
+            background-color: grey;
         }
         .hidden-window {
             display: none;
@@ -94,12 +95,12 @@
             margin-top: 20px; 
         }
 
-        .bottom-button-left {
+        .bottom-button-open {
             font-family: Garamond, sans-serif;
             position: fixed;
             bottom: 20px; 
             left: 50%;
-            transform: translateX(10%);
+            transform: translateX(-50%);
             font-size: 16px;
             padding: 10px 20px;
             background-color: rgba(224, 161, 66, 0.288);
@@ -108,15 +109,16 @@
             border-radius: 5px;
             cursor: pointer;
             font-weight: bold;
+            display: block;
         }
 
-        .bottom-button-right {
+        .bottom-button-close {
             font-family: Garamond, sans-serif;
             font-weight: bold;
             position: fixed;
             bottom: 20px; 
             left: 50%;
-            transform: translateX(-110%);
+            transform: translateX(-50%);
             font-size: 16px;
             padding: 10px 20px;
             background-color: rgba(224, 161, 66, 0.288);
@@ -124,13 +126,14 @@
             border: 2px solid black;
             border-radius: 5px;
             cursor: pointer;
+            display: none;
         }
 
-        .bottom-button-left:hover{
+        .bottom-button-open:hover{
             border: 3px solid black;
         }
 
-        .bottom-button-right:hover{
+        .bottom-button-close:hover{
             border: 3px solid black;
         }
 
@@ -189,7 +192,52 @@
             background-color: lightgoldenrodyellow;
         }
 
+        .option-button:hover{
+            border: 3px solid black;
+        }
+
+        .closecourt-button{
+            text-align: center;
+            width: 200px;
+            height: 30px;
+            font-size: 18px;
+            margin-top: 0px;
+            font-family: Garamond, sans-serif;
+            font-weight: bold;
+            background-color: lightgoldenrodyellow;
+            display: none;
+        }
+
+        .closecourt-button:hover{
+            border: 3px solid black;
+        }
+
+        .opencourt-button{
+            text-align: center;
+            width: 200px;
+            height: 30px;
+            font-size: 18px;
+            margin-top: 0px;
+            font-family: Garamond, sans-serif;
+            font-weight: bold;
+            background-color: lightgoldenrodyellow;
+            display: "block";
+        }
         
+        .opencourt-button:hover{
+            border: 3px solid black;
+            font-family: Garamond, sans-serif;
+            font-weight: bold;
+        }
+
+        .x-button{
+            text-align: center;
+            background-color: rgba(0, 208, 255, 0);
+        }
+
+        .x-button:hover{
+            border: 3px solid black;
+        }
 
     </style>
     <script>
@@ -247,8 +295,6 @@
             if (playersAhead[buttonId] < 10){
                 hideModerate(buttonId)
             }
-            
-        
         }
 
         function leavingTeam(index){
@@ -271,11 +317,21 @@
         }
 
         // Open or close
-        function availability(index){
+        function closeCourt(index){
             colors[index] = "grey";
             playersAhead[index] = 0;
             document.getElementById('playersAhead' + index).innerText = "Players Ahead: " + playersAhead[index];
             document.getElementById('circleDisplay' + index).className = "circle " + colors[index];
+            document.getElementById("closeCourt" + index).style.display = "none";
+            document.getElementById("openCourt" + index).style.display = "block";
+            hideModerate(index);
+        }
+
+        function openCourt(index){
+            colors[index] = "green";
+            document.getElementById('circleDisplay' + index).className = "circle " + colors[index];
+            document.getElementById("closeCourt" + index).style.display = "block";
+            document.getElementById("openCourt" + index).style.display = "none";
         }
 
         function checkPlayerCount(index){
@@ -293,15 +349,19 @@
             changeColor(3);
             changeColor(4);
             changeColor(5);
+            document.getElementById("openallcourts").style.display = "none";
+            document.getElementById("closeallcourts").style.display = "block";
         }
 
         function closeAll(){
-            availability(0);
-            availability(1);
-            availability(2);
-            availability(3);
-            availability(4);
-            availability(5);
+            closeCourt(0);
+            closeCourt(1);
+            closeCourt(2);
+            closeCourt(3);
+            closeCourt(4);
+            closeCourt(5);
+            document.getElementById("closeallcourts").style.display = "none";
+            document.getElementById("openallcourts").style.display = "block";
         }
 
     </script>
@@ -314,38 +374,38 @@
 <div class="button-container">
     <div>
         <div id="circleDisplay0" class="circle"></div>
-        <button id="myButton" class="button" onclick="toggleHiddenWindow(0)">A</button>
+        <button id="myButton0" class="button" onclick="toggleHiddenWindow(0)">A</button>
     </div>
     <div>
         <div id="circleDisplay1" class="circle"></div>
-        <button id="myButton" class="button" onclick="toggleHiddenWindow(1)">B</button>
+        <button id="myButton1" class="button" onclick="toggleHiddenWindow(1)">B</button>
     </div>
     <div>
         <div id="circleDisplay2" class="circle"></div>
-        <button id="myButton" class="button" onclick="toggleHiddenWindow(2)">C</button>
+        <button id="myButton2" class="button" onclick="toggleHiddenWindow(2)">C</button>
     </div>
     <div>
         <div id="circleDisplay3" class="circle"></div>
-        <button id="myButton" class="button" onclick="toggleHiddenWindow(3)">D</button>
+        <button id="myButton3" class="button" onclick="toggleHiddenWindow(3)">D</button>
     </div>
     <div>
         <div id="circleDisplay4" class="circle"></div>
-        <button id="myButton" class="button" onclick="toggleHiddenWindow(4)">E</button>
+        <button id="myButton4" class="button" onclick="toggleHiddenWindow(4)">E</button>
     </div>
     <div>
         <div id="circleDisplay5" class="circle"></div>
-        <button id="myButton" class="button" onclick="toggleHiddenWindow(5)">F</button>
+        <button id="myButton5" class="button" onclick="toggleHiddenWindow(5)">F</button>
     </div>
     <div class ="bottom-buttons-container">
-        <button class="bottom-button-left" onclick="openAll()">Open All</button>
-        <button class="bottom-button-right" onclick="closeAll()">Close All</button>
+        <button id="openallcourts" class="bottom-button-open" onclick="openAll()">Open All</button>
+        <button id="closeallcourts" class="bottom-button-close" onclick="closeAll()">Close All</button>
     </div>
 </div>
 
 <!-- Hidden windows -->
 <div id="hiddenWindow0" class="hidden-window">
     <h3>
-        <button onclick="toggleHiddenWindow(0)">X</button>
+        <button class="x-button" onclick="toggleHiddenWindow(0)">X</button>
     </h3>
     <h2>Queue A:</h2>
     <p id="playersAhead0">Players Ahead: 0</p>
@@ -354,7 +414,8 @@
         <button class="option-button" onclick="clearQueue(0)" style="margin-bottom: 7px;">Clear</button>
     </div>
     <div>
-        <button class="option-button" onclick="availability(0)" style="margin-bottom: 7px">Close Court</button>
+        <button id="closeCourt0" class="closecourt-button" onclick="closeCourt(0)" style="margin-bottom: 7px">Close Court</button>
+        <button id="openCourt0" class="opencourt-button" onclick="openCourt(0)" style="margin-bottom: 7px">Open Court</button>
     </div>
     <div>
         <button id="moderateButton0" class="mod-button" onclick="toggleModHiddenWindow(0)">Moderate</button>
@@ -362,7 +423,7 @@
 
     <div id="modHiddenWindow0" class="hidden-window" style="margin-top: 20px;">
         <h3>
-            <button onclick="toggleModHiddenWindow(0)">X</button>
+            <button class="x-button" onclick="toggleModHiddenWindow(0)">X</button>
         </h3>
         <h2>Moderate:</h2>
         <button class="team1-button" onclick="toggleAndSub(0)">Team 1</button> <br>
@@ -373,7 +434,7 @@
 
 <div id="hiddenWindow1" class="hidden-window">
     <h3>
-        <button onclick="toggleHiddenWindow(1)">X</button>
+        <button class="x-button" onclick="toggleHiddenWindow(1)">X</button>
     </h3>
     <h2>Queue B:</h2>
     <p id="playersAhead1">Players Ahead: 0</p>
@@ -382,7 +443,8 @@
         <button class="option-button" onclick="clearQueue(1)" style="margin-bottom: 7px;">Clear</button>
     </div>
     <div>
-        <button class="option-button" onclick="availability(1)"style="margin-bottom: 7px">Close Court</button>
+        <button id="closeCourt1" class="closecourt-button" onclick="closeCourt(1)" style="margin-bottom: 7px">Close Court</button>
+        <button id="openCourt1" class="opencourt-button" onclick="openCourt(1)" style="margin-bottom: 7px">Open Court</button>
     </div>
     <div>
         <button id="moderateButton1" class="mod-button" onclick="toggleModHiddenWindow(1)">Moderate</button>
@@ -390,7 +452,7 @@
 
     <div id="modHiddenWindow1" class="hidden-window" style="margin-top: 20px;">
         <h3>
-            <button onclick="toggleModHiddenWindow(1)">X</button>
+            <button class="x-button"onclick="toggleModHiddenWindow(1)">X</button>
         </h3>
         <h2>Moderate:</h2>
         <button class="team1-button" onclick="toggleAndSub(1)">Team 1</button> <br>
@@ -400,7 +462,7 @@
 
 <div id="hiddenWindow2" class="hidden-window">
     <h3>
-        <button onclick="toggleHiddenWindow(2)">X</button>
+        <button class="x-button" onclick="toggleHiddenWindow(2)">X</button>
     </h3>
     <h2>Queue C:</h2>
     <p id="playersAhead2">Players Ahead: 0</p>
@@ -409,7 +471,8 @@
         <button class="option-button" onclick="clearQueue(2)" style="margin-bottom: 7px;">Clear</button>
     </div>
     <div>
-        <button class="option-button" onclick="availability(2)"style="margin-bottom: 7px">Close Court</button>
+        <button id="closeCourt2" class="closecourt-button" onclick="closeCourt(2)" style="margin-bottom: 7px">Close Court</button>
+        <button id="openCourt2" class="opencourt-button" onclick="openCourt(2)" style="margin-bottom: 7px">Open Court</button>
     </div>
     <div>
         <button id="moderateButton2" class="mod-button" onclick="toggleModHiddenWindow(2)">Moderate</button>
@@ -417,7 +480,7 @@
 
     <div id="modHiddenWindow2" class="hidden-window" style="margin-top: 20px;">
         <h3>
-            <button onclick="toggleModHiddenWindow(2)">X</button>
+            <button class="x-button" onclick="toggleModHiddenWindow(2)">X</button>
         </h3>
         <h2>Moderate:</h2>
         <button class="team1-button" onclick="toggleAndSub(2)">Team 1</button> <br>
@@ -427,7 +490,7 @@
 
 <div id="hiddenWindow3" class="hidden-window">
     <h3>
-        <button onclick="toggleHiddenWindow(3)">X</button>
+        <button class="x-button" onclick="toggleHiddenWindow(3)">X</button>
     </h3>
     <h2>Queue D:</h2>
     <p id="playersAhead3">Players Ahead: 0</p>
@@ -436,7 +499,8 @@
         <button class="option-button" onclick="clearQueue(3)" style="margin-bottom: 7px;">Clear</button>
     </div>
     <div>
-        <button class="option-button" onclick="availability(3)"style="margin-bottom: 7px">Close Court</button>
+        <button id="closeCourt3" class="closecourt-button" onclick="closeCourt(3)" style="margin-bottom: 7px">Close Court</button>
+        <button id="openCourt3" class="opencourt-button" onclick="openCourt(3)" style="margin-bottom: 7px">Open Court</button>
     </div>
     <div>
         <button id="moderateButton3" class="mod-button" onclick="toggleModHiddenWindow(3)">Moderate</button>
@@ -444,7 +508,7 @@
 
     <div id="modHiddenWindow3" class="hidden-window" style="margin-top: 20px;">
         <h3>
-            <button onclick="toggleModHiddenWindow(3)">X</button>
+            <button class="x-button" onclick="toggleModHiddenWindow(3)">X</button>
         </h3>
         <h2>Moderate:</h2>
         <button class="team1-button" onclick="toggleAndSub(3)">Team 1</button> <br>
@@ -454,7 +518,7 @@
 
 <div id="hiddenWindow4" class="hidden-window">
     <h3>
-        <button onclick="toggleHiddenWindow(4)">X</button>
+        <button class="x-button" onclick="toggleHiddenWindow(4)">X</button>
     </h3>
     <h2>Queue E:</h2>
     <p id="playersAhead4">Players Ahead: 0</p>
@@ -463,7 +527,8 @@
         <button class="option-button" onclick="clearQueue(4)" style="margin-bottom: 7px;">Clear</button>
     </div>
     <div>
-        <button class="option-button" onclick="availability(4)"style="margin-bottom: 7px">Close Court</button>
+        <button id="closeCourt4" class="closecourt-button" onclick="closeCourt(4)" style="margin-bottom: 7px">Close Court</button>
+        <button id="openCourt4" class="opencourt-button" onclick="openCourt(4)" style="margin-bottom: 7px">Open Court</button>
     </div>
     <div>
         <button id="moderateButton4" class="mod-button" onclick="toggleModHiddenWindow(4)">Moderate</button>
@@ -471,7 +536,7 @@
 
     <div id="modHiddenWindow4" class="hidden-window" style="margin-top: 20px;">
         <h3>
-            <button onclick="toggleModHiddenWindow(4)">X</button>
+            <button class="x-button" onclick="toggleModHiddenWindow(4)">X</button>
         </h3>
         <h2>Moderate:</h2>
         <button class="team1-button" onclick="toggleAndSub(4)">Team 1</button> <br>
@@ -481,7 +546,7 @@
 
 <div id="hiddenWindow5" class="hidden-window">
     <h3>
-        <button onclick="toggleHiddenWindow(5)">X</button>
+        <button class="x-button" onclick="toggleHiddenWindow(5)">X</button>
     </h3>
     <h2>Queue F:</h2>
     <p id="playersAhead5">Players Ahead: 0</p>
@@ -490,7 +555,8 @@
         <button class="option-button" onclick="clearQueue(5)" style="margin-bottom: 7px;">Clear</button>
     </div>
     <div>
-        <button class="option-button" onclick="availability(5)"style="margin-bottom: 7px">Close Court</button>
+        <button id="closeCourt5" class="closecourt-button" onclick="closeCourt(5)" style="margin-bottom: 7px">Close Court</button>
+        <button id="openCourt5" class="opencourt-button" onclick="openCourt(5)" style="margin-bottom: 7px">Open Court</button>
     </div>
     <div>
         <button id="moderateButton5" class="mod-button" onclick="toggleModHiddenWindow(5)">Moderate</button>
@@ -498,7 +564,7 @@
 
     <div id="modHiddenWindow5" class="hidden-window" style="margin-top: 20px;">
         <h3>
-            <button onclick="toggleModHiddenWindow(5)">X</button>
+            <button class="x-button" onclick="toggleModHiddenWindow(5)">X</button>
         </h3>
         <h2>Moderate:</h2>
         <button class="team1-button" onclick="toggleAndSub(5)">Team 1</button> <br>
