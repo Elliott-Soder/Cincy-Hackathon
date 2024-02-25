@@ -220,13 +220,17 @@
         function toggleAndSub(buttonId){
             toggleModHiddenWindow(buttonId)
             leavingTeam(buttonId)
+            
+            while (playersAhead[index] < 10) {
+                hideModerate(buttonId)
+            }
         }
 
         function leavingTeam(index){
             playersAhead[index] -= 5;
             changeColor(index)
             document.getElementById('playersAhead' + index).innerText = "Players Ahead: " + playersAhead[index];
-            document.getElementById("moderateButton" + index).style.display = "none";
+            hideModerate(index)
         }
 
 
@@ -235,6 +239,10 @@
             playersAhead[index] = 0;
             document.getElementById('playersAhead' + index).innerText = "Players Ahead: " + playersAhead[index];
             changeColor(index);
+            hideModerate(index);
+        }
+
+        function hideModerate(index){
             document.getElementById("moderateButton" + index).style.display = "none";
         }
 
