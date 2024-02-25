@@ -99,26 +99,26 @@
             document.getElementById('circleDisplay' + index).className = "circle " + colors[index];
         }
         
-        x = 1;
+        
         // Function to add yourself to the queue
         function incrementPlayersAhead(index) {
-            x - 1;
-            if(x=0){
+        
+            
             playersAhead[index]++;
             changeColor(index);
             document.getElementById('playersAhead' + index).innerText = "Players Ahead: " + playersAhead[index];
         }
-    }
+    
 
         // Function to remove yourself from queue
         function incrementPlayersAhead(index) {
-            x + 1;
-            if(x=1){
+            
+            
             playersAhead[index]--;
             changeColor(index);
             document.getElementById('playersAhead' + index).innerText = "Players Ahead: " + playersAhead[index];
             }
-        }
+        
 
 
         // Function to toggle the visibility of the hidden window associated with the button
