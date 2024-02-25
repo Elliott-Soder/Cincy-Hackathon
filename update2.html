@@ -154,13 +154,23 @@
             font-family: Garamond, sans-serif;
             font-weight: bold;
             background-color: lightgoldenrodyellow;
-        
-            
+        }     
+
+        .mod-button{
+            display: visible;
+            text-align: center;
+            width: 100px;
+            height: 25px;
+            font-family: Garamond, sans-serif;
+            font-weight: bold;
+            background-color: lightgoldenrodyellow;
         }
 
         
+
     </style>
     <script>
+
         // Define an array of colors
         var colors = ["green", "green", "green", "green", "green", "green"];
 
@@ -183,6 +193,7 @@
         function incrementPlayersAhead(index) {
             playersAhead[index]++;
             changeColor(index);
+            checkPlayerCount(index)
             document.getElementById('playersAhead' + index).innerText = "Players Ahead: " + playersAhead[index];
         }
 
@@ -233,6 +244,14 @@
             document.getElementById('circleDisplay' + index).className = "circle " + colors[index];
         }
 
+        function checkPlayerCount(index){
+            if (playersAhead[index] >= 10){
+                document.getElementById("moderateButton" + index).style.display = "block";
+            } else {
+                document.getElementById("moderateButton" + index).style.display = "none";
+            }
+        }
+
         function openAll(){
             changeColor(0);
             changeColor(1);
@@ -255,7 +274,7 @@
 </head>
 <body>
 
-<h1> Select A Court! </h1>
+<h1> Who Got Next? </h1>
 
 <!-- Display the circles -->
 <div class="button-container">
@@ -304,7 +323,7 @@
         <button onclick="availability(0)" style="margin-bottom: 7px">Close Court</button>
     </div>
     <div>
-        <button onclick="toggleModHiddenWindow(0)">Moderate</button>
+        <button id="moderateButton0" class="mod-button" onclick="toggleModHiddenWindow(0)">Moderate</button>
     </div>
 
     <div id="modHiddenWindow0" class="hidden-window" style="margin-top: 20px;">
@@ -332,7 +351,7 @@
         <button onclick="availability(1)"style="margin-bottom: 7px">Close Court</button>
     </div>
     <div>
-        <button onclick="toggleModHiddenWindow(1)">Moderate</button>
+        <button id="moderateButton1" class="mod-button" onclick="toggleModHiddenWindow(1)">Moderate</button>
     </div>
 
     <div id="modHiddenWindow1" class="hidden-window" style="margin-top: 20px;">
@@ -359,7 +378,7 @@
         <button onclick="availability(2)"style="margin-bottom: 7px">Close Court</button>
     </div>
     <div>
-        <button onclick="toggleModHiddenWindow(2)">Moderate</button>
+        <button id="moderateButton2" class="mod-button" onclick="toggleModHiddenWindow(2)">Moderate</button>
     </div>
 
     <div id="modHiddenWindow2" class="hidden-window" style="margin-top: 20px;">
@@ -386,7 +405,7 @@
         <button onclick="availability(3)"style="margin-bottom: 7px">Close Court</button>
     </div>
     <div>
-        <button onclick="toggleModHiddenWindow(3)">Moderate</button>
+        <button id="moderateButton3" class="mod-button" onclick="toggleModHiddenWindow(3)">Moderate</button>
     </div>
 
     <div id="modHiddenWindow3" class="hidden-window" style="margin-top: 20px;">
@@ -413,7 +432,7 @@
         <button onclick="availability(4)"style="margin-bottom: 7px">Close Court</button>
     </div>
     <div>
-        <button onclick="toggleModHiddenWindow(4)">Moderate</button>
+        <button id="moderateButton4" class="mod-button" onclick="toggleModHiddenWindow(4)">Moderate</button>
     </div>
 
     <div id="modHiddenWindow4" class="hidden-window" style="margin-top: 20px;">
@@ -440,7 +459,7 @@
         <button onclick="availability(5)"style="margin-bottom: 7px">Close Court</button>
     </div>
     <div>
-        <button onclick="toggleModHiddenWindow(5)">Moderate</button>
+        <button id="moderateButton5" class="mod-button" onclick="toggleModHiddenWindow(5)">Moderate</button>
     </div>
 
     <div id="modHiddenWindow5" class="hidden-window" style="margin-top: 20px;">
