@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Who Got Next?</title>
+    <style>
+        .button {
+            width: 150px;
+            height: 250px;
+            font-size: 35px;
+            font-weight: bold;
+            margin: 25px;
+            margin-top: 5px;
+            font-family: Garamond, sans-serif;
+            background-image: url(bball.jpg); /* Replace 'basketball_court.png' with your actual image file */
+            background-size: cover;
+            color: black;
+            text-align: center;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 10px;
+            border: 2px solid black;
+
+        }
+        .button-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            font-family: Garamond, sans-serif;
+        }
+        .circle {
+            width: 20px;
+            height: 20px;
+            border-radius: 70%;
+            margin-top: 5px;
+            border: 2px solid black; 
+            background-color: green;
+        }
+        .hidden-window {
+            display: none; /* Initially hidden */
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 200px;
+            height: 175px;
+            background-color: white;
+            border: 2px solid black;
+            z-index: 9999; /* Ensure it appears above other content */
+            padding: 20px;
+            font-family: Garamond, sans-serif;
+        }
+        .green { background-color: green; }
+        .orangered { background-color: orangered; }
+        .yellow { background-color: yellow; }
+        .grey { background-color: grey;}
+
+        h1 {
+            text-align: center;
+            font-family: Garamond, sans-serif;
+            font-size: 40px;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+        
+    </style>
+    <script>
+        // Define an array of colors
+        var colors = ["green", "green", "green", "green", "green", "green"];
+
+        // Define an array to store players ahead for each court
+        var playersAhead = [0, 0, 0, 0, 0, 0];
+
+        // Function to change the color of the circle
+        function changeColor(index) {
+            if (playersAhead[index] == 1) {
+                colors[index] = "yellow";
+            } else if (playersAhead[index] >= 2) {
+                colors[index] = "orangered";
+            } else {
+                colors[index] = "green";
+            }
+            document.getElementById('circleDisplay' + index).className = "circle " + colors[index];
+        }
+
+        // Function to increment players ahead
+        function incrementPlayersAhead(index) {
+            playersAhead[index]++;
+            changeColor(index);
+            document.getElementById('playersAhead' + index).innerText = "Players Ahead: " + playersAhead[index];
+        }
+
+        // Function to toggle the visibility of the hidden window associated with the button
+        function toggleHiddenWindow(buttonId) {
+            var hiddenWindow = document.getElementById("hiddenWindow" + buttonId);
+            if (hiddenWindow.style.display === "none") {
+                hiddenWindow.style.display = "block"; // Show the window
+            } else {
+                hiddenWindow.style.display = "none"; // Hide the window
+            }
+        }
+
+        // Clears Current Queue
+        function clearQueue(index){
+            playersAhead[index] = 0;
+            document.getElementById('playersAhead' + index).innerText = "Players Ahead: " + playersAhead[index];
+            changeColor(index);
+        }
+
+        // Open or close
+        function availability(index){
+            colors[index] = "grey";
+            playersAhead[index] = 0;
+            let closeCourtButton = document.getElementById("closeCourtButton");
+            let openCourtButton = document.getElementById("openCourtButton");
+
+            document.getElementById('playersAhead' + index).innerText = "Players Ahead: " + playersAhead[index];
+            document.getElementById('circleDisplay' + index).className = "circle " + colors[index];
+
+            if (closeCourtButton.style.display === "none") {
+                closeCourtButton.style.display = "inline-block";
+                openCourtButton.style.display = "none";
+            } else {
+                closeCourtButton.style.display = "none";
+                openCourtButton.style.display = "inline-block";
+            }
+        }
+
+        function reUpAvailability(index){
+            let closeCourtButton = document.getElementById("closeCourtButton");
+            let openCourtButton = document.getElementById("openCourtButton");
+
+            if (closeCourtButton.style.display == "none") {
+                closeCourtButton.style.display = "inline-block";
+                openCourtButton.style.display = "none";
+            } else {
+                closeCourtButton.style.display = "none";
+                openCourtButton.style.display = "inline-block";
+            }
+
+            clearQueue(index);
+        }
+
+    </script>
+</head>
+<body>
+
+<h1> Select A Court! </h1>
+
+<!-- Display the circles -->
+<div class="button-container">
+    <div>
+        <div id="circleDisplay0" class="circle"></div>
+        <button class="button" onclick="toggleHiddenWindow(0)">A</button>
+    </div>
+    <div>
+        <div id="circleDisplay1" class="circle"></div>
+        <button class="button" onclick="toggleHiddenWindow(1)">B</button>
+    </div>
+    <div>
+        <div id="circleDisplay2" class="circle"></div>
+        <button class="button" onclick="toggleHiddenWindow(2)">C</button>
+    </div>
+    <div>
+        <div id="circleDisplay3" class="circle"></div>
+        <button class="button" onclick="toggleHiddenWindow(3)">D</button>
+    </div>
+    <div>
+        <div id="circleDisplay4" class="circle"></div>
+        <button class="button" onclick="toggleHiddenWindow(4)">E</button>
+    </div>
+    <div>
+        <div id="circleDisplay5" class="circle"></div>
+        <button class="button" onclick="toggleHiddenWindow(5)">F</button>
+    </div>
+</div>
+
+<!-- Hidden windows -->
+<div id="hiddenWindow0" class="hidden-window">
+    <h3>
+        <button onclick="toggleHiddenWindow(0)">X</button>
+    </h3>
+    <h2>Court A:</h2>
+    <p id="playersAhead0">Players Ahead: 0</p>
+    <button onclick="incrementPlayersAhead(0)" style="margin-bottom: 7px;">Queue Player</button>
+    <div>
+        <button onclick="clearQueue(0)" style="margin-bottom: 7px;">Clear Queue</button>
+    </div>
+    <div>
+        <button id="closeCourtButton" onclick="availability(0)">Close Court</button>
+    </div>
+    <div>
+        <button id="openCourtButton" style="display: none;" onclick="reUpAvailability(0)">Open Court</button>
+    </div>
+</div>
+
+<div id="hiddenWindow1" class="hidden-window">
+    <h3>
+        <button onclick="toggleHiddenWindow(1)">X</button>
+    </h3>
+    <h2>Court B:</h2>
+    <p id="playersAhead1">Players Ahead: 0</p>
+    <button onclick="incrementPlayersAhead(1)" style="margin-bottom: 7px;">Queue Player</button>
+    <div>
+        <button onclick="clearQueue(1)" style="margin-bottom: 7px;">Clear Queue</button>
+    </div>
+    <div>
+        <button id="closeCourtButton" onclick="availability(1)">Close Court</button>
+    </div>
+    <div>
+        <button id="openCourtButton" style="display: none;" onclick="reUpAvailability(1)">Open Court</button>
+    </div>
+</div>
+
+<div id="hiddenWindow2" class="hidden-window">
+    <h3>
+        <button onclick="toggleHiddenWindow(2)">X</button>
+    </h3>
+    <h2>Court C:</h2>
+    <p id="playersAhead2">Players Ahead: 0</p>
+    <button onclick="incrementPlayersAhead(2)" style="margin-bottom: 7px;">Queue Player</button>
+    <div>
+        <button onclick="clearQueue(2)" style="margin-bottom: 7px;">Close Queue</button>
+    </div>
+    <div>
+        <button id="closeCourtButton" onclick="availability(2)">Open Court</button>
+    </div>
+    <div>
+        <button id="openCourtButton" style="display: none;" onclick="reUpAvailability(2)">Open Court</button>
+    </div>
+</div>
+
+<div id="hiddenWindow3" class="hidden-window">
+    <h3>
+        <button onclick="toggleHiddenWindow(3)">X</button>
+    </h3>
+    <h2>Court D:</h2>
+    <p id="playersAhead3">Players Ahead: 0</p>
+    <button onclick="incrementPlayersAhead(3)" style="margin-bottom: 7px;">Queue Player</button>
+    <div>
+        <button onclick="clearQueue(3)" style="margin-bottom: 7px;">Clear Queue</button>
+    </div>
+    <div>
+        <button id="closeCourtButton" onclick="availability(3)">Close Court</button>
+    </div>
+    <div>
+        <button id="openCourtButton" style="display: none;" onclick="reUpAvailability(3)">Open Court</button>
+    </div>
+</div>
+
+<div id="hiddenWindow4" class="hidden-window">
+    <h3>
+        <button onclick="toggleHiddenWindow(4)">X</button>
+    </h3>
+    <h2>Court E:</h2>
+    <p id="playersAhead4">Players Ahead: 0</p>
+    <button onclick="incrementPlayersAhead(4)" style="margin-bottom: 7px;">Queue Player</button>
+    <div>
+        <button onclick="clearQueue(4)" style="margin-bottom: 7px;">Clear Queue</button>
+    </div>
+    <div>
+        <button id="closeCourtButton" onclick="availability(4)">Close Court</button>
+    </div>
+    <div>
+        <button id="openCourtButton" style="display: none;" onclick="reUpAvailability(4)">Open Court</button>
+    </div>
+</div>
+
+<div id="hiddenWindow5" class="hidden-window">
+    <h3>
+        <button onclick="toggleHiddenWindow(5)">X</button>
+    </h3>
+    <h2>Court F:</h2>
+    <p id="playersAhead5">Players Ahead: 0</p>
+    <button onclick="incrementPlayersAhead(5)" style="margin-bottom: 7px;">Queue Player</button>
+    <div>
+        <button onclick="clearQueue(5)" style="margin-bottom: 7px;">Clear Queue</button>
+    </div>
+    <div>
+        <button id="closeCourtButton" onclick="availability(5)">Close Court</button>
+    </div>
+    <div>
+        <button id="openCourtButton" style="display: none;" onclick="reUpAvailability(5)">Open Court</button>
+    </div>
+</div>
+
+</body>
+</html>
