@@ -103,7 +103,7 @@
             transform: translateX(-50%);
             font-size: 16px;
             padding: 10px 20px;
-            background-color: rgba(224, 161, 66, 0.288);
+            background-color: lightgoldenrodyellow;
             color: black;
             border: 2px solid black;
             border-radius: 5px;
@@ -121,7 +121,7 @@
             transform: translateX(-50%);
             font-size: 16px;
             padding: 10px 20px;
-            background-color: rgba(224, 161, 66, 0.288);
+            background-color: lightgoldenrodyellow;
             color: black;
             border: 2px solid black;
             border-radius: 5px;
@@ -241,16 +241,18 @@
 
         .backButton{
             text-align: center;
+            position: fixed;
             width: 50px;
             height: 30px;
             font-size: 15px;
+            margin-right: 350px;
+            margin-top: 70px;
+            margin-bottom: 20px;
+            margin-left: 20px;
             font-family: Garamond, sans-serif;
             font-weight: bold;
             background-color: rgba(250, 250, 210, 0.414);
             border-radius: 5px;
-            position: fixed;
-            margin-right: 2325px;
-            margin-top: 640px;
         }
 
         .backButton:hover{
@@ -383,7 +385,7 @@
         }
 
         function backToMain(){
-            mainPage = "MainMenu.html";
+            let mainPage = "MainMenu.html";
             window.location.href = mainPage;
         }
 
@@ -422,16 +424,17 @@
     <div class ="bottom-buttons-container">
         <button id="openallcourts" class="bottom-button-open" onclick="openAll()">Open All</button>
         <button id="closeallcourts" class="bottom-button-close" onclick="closeAll()">Close All</button>
-        <button class="backButton" onclick="backToMain()">Back</button>
     </div>
 </div>
+
+    <button class="backButton" onclick="backToMain()">Back</button>
 
 <!-- Hidden windows -->
 <div id="hiddenWindow0" class="hidden-window">
     <h3>
         <button class="x-button" onclick="toggleHiddenWindow(0)">X</button>
     </h3>
-    <h2>Queue A:</h2>
+    <h2>Court A:</h2>
     <p id="playersAhead0">Players Ahead: 0</p>
     <button class="option-button" onclick="incrementPlayersAhead(0)" style="margin-bottom: 7px;">Increment Players</button>
     <div>
@@ -460,7 +463,7 @@
     <h3>
         <button class="x-button" onclick="toggleHiddenWindow(1)">X</button>
     </h3>
-    <h2>Queue B:</h2>
+    <h2>Court B:</h2>
     <p id="playersAhead1">Players Ahead: 0</p>
     <button class="option-button" onclick="incrementPlayersAhead(1)" style="margin-bottom: 7px;">Increment Players</button>
     <div>
@@ -488,7 +491,7 @@
     <h3>
         <button class="x-button" onclick="toggleHiddenWindow(2)">X</button>
     </h3>
-    <h2>Queue C:</h2>
+    <h2>Court C:</h2>
     <p id="playersAhead2">Players Ahead: 0</p>
     <button class="option-button" onclick="incrementPlayersAhead(2)" style="margin-bottom: 7px;">Increment Players</button>
     <div>
@@ -516,7 +519,7 @@
     <h3>
         <button class="x-button" onclick="toggleHiddenWindow(3)">X</button>
     </h3>
-    <h2>Queue D:</h2>
+    <h2>Court D:</h2>
     <p id="playersAhead3">Players Ahead: 0</p>
     <button class="option-button" onclick="incrementPlayersAhead(3)" style="margin-bottom: 7px;">Increment Players</button>
     <div>
@@ -544,7 +547,7 @@
     <h3>
         <button class="x-button" onclick="toggleHiddenWindow(4)">X</button>
     </h3>
-    <h2>Queue E:</h2>
+    <h2>Court E:</h2>
     <p id="playersAhead4">Players Ahead: 0</p>
     <button class="option-button" onclick="incrementPlayersAhead(4)" style="margin-bottom: 7px;">Increment Players</button>
     <div>
@@ -572,7 +575,7 @@
     <h3>
         <button class="x-button" onclick="toggleHiddenWindow(5)">X</button>
     </h3>
-    <h2>Queue F:</h2>
+    <h2>Court F:</h2>
     <p id="playersAhead5">Players Ahead: 0</p>
     <button class="option-button" onclick="incrementPlayersAhead(5)" style="margin-bottom: 7px;">Increment Players</button>
     <div>
