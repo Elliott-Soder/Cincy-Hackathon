@@ -157,7 +157,7 @@
         }     
 
         .mod-button{
-            display: visible;
+            display: none;
             text-align: center;
             width: 100px;
             height: 25px;
@@ -226,6 +226,7 @@
             playersAhead[index] -= 5;
             changeColor(index)
             document.getElementById('playersAhead' + index).innerText = "Players Ahead: " + playersAhead[index];
+            document.getElementById("moderateButton" + index).style.display = "none";
         }
 
 
@@ -234,6 +235,7 @@
             playersAhead[index] = 0;
             document.getElementById('playersAhead' + index).innerText = "Players Ahead: " + playersAhead[index];
             changeColor(index);
+            document.getElementById("moderateButton" + index).style.display = "none";
         }
 
         // Open or close
