@@ -66,24 +66,20 @@
             color: rgb(1, 1, 1);
             font-size: 30px;
         }
-
         .img {
             display: block;
             margin-left: auto;
             margin-right: auto;
             width: 50%;
             }
-
         .link {
             font-family: Garamond, sans-serif;
             text-align: center;
         }
-
     </style>
     <script>
         // Define an array of colors
         var colors = ["green", "green", "green", "green", "green", "green"];
-
         // Define an array to store players ahead for each court
         var playersAhead = [0, 0, 0, 0, 0, 0];
 
@@ -99,7 +95,7 @@
             document.getElementById('circleDisplay' + index).className = "circle " + colors[index];
         }
         
-        
+
         // Function to add yourself to the queue
         function incrementPlayersAhead(index) {
             let addPlayer = document.getElementById("addPlayer" + index);
@@ -131,12 +127,10 @@
             changeColor(index);
             document.getElementById('playersAhead' + index).innerText = "Players Waiting: " + playersAhead[index];
         }
-    
+
 
         
         
-
-
         // Function to toggle the visibility of the hidden window associated with the button
         function toggleHiddenWindow(buttonId) {
             var hiddenWindow = document.getElementById("hiddenWindow" + buttonId);
@@ -146,27 +140,21 @@
                 hiddenWindow.style.display = "none"; // Hide the window
             }
         }
-
         
         
         
-
-
     </script>
 </head>
 <body>
-
     
     <!-- Header -->
           
         
     <div class="header">
-
     <h1>Who Got Next?</h1> 
     
     </div>
    
-
 <!-- Display the circles -->
 <div class="button-container">
     <div>
@@ -196,8 +184,6 @@
         <button class="button" onclick="toggleHiddenWindow(5)">Court 6</button>
     </div>
 </div>
-
-
 <!-- Hidden windows -->
 <div id="hiddenWindow0" class="hidden-window" >
     <h3>
@@ -206,8 +192,9 @@
     <h2>Queue 1</h2>
     <p id="playersAhead0">Players Waiting: 0</p>
     <button id="addPlayer0" onclick="incrementPlayersAhead(0)">Join Queue</button>
+   
     <button id="removePlayer0" style="display: none;" onclick="clearQueue(0)">Leave Queue</button>
-    
+
 </div>
 
 <div id="hiddenWindow1" class="hidden-window">
@@ -217,6 +204,7 @@
     <h2>Queue 2</h2>
     <p id="playersAhead1">Players Waiting: 0</p>
     <button id="addPlayer1" onclick="incrementPlayersAhead(1)">Join Queue</button>
+    
     <button id="removePlayer1" style="display: none;" onclick="clearQueue(1)">Leave Queue</button>
 </div>
 
@@ -227,6 +215,7 @@
     <h2>Queue 3</h2>
     <p id="playersAhead2">Players Waiting: 0</p>
     <button id="addPlayer2" onclick="incrementPlayersAhead(2)">Join Queue</button>
+    
     <button id="removePlayer2" style="display: none;" onclick="clearQueue(2)">Leave Queue</button>
 </div>
 
@@ -237,6 +226,7 @@
     <h2>Queue 4</h2>
     <p id="playersAhead3">Players Waiting: 0</p>
     <button id="addPlayer3" onclick="incrementPlayersAhead(3)">Join Queue</button>
+    
     <button id="removePlayer3" style="display: none;" onclick="clearQueue(3)">Leave Queue</button>
 </div>
 
@@ -247,6 +237,7 @@
     <h2>Queue 5</h2>
     <p id="playersAhead4">Players Waiting: 0</p>
     <button id="addPlayer4" onclick="incrementPlayersAhead(4)">Join Queue</button>
+    <
     <button id="removePlayer4" style="display: none;" onclick="clearQueue(4)">Leave Queue</button>
 </div>
 
@@ -258,12 +249,12 @@
     <p id="playersAhead5">Players Waiting: 0</p>
     <div>
     <button id="addPlayer5" onclick="incrementPlayersAhead(5)">Join Queue</button>
+    
     </div>
     <div>
     <button id="removePlayer5" style="display: none;" onclick="clearQueue(5)">Leave Queue</button>
     </div> 
 </div>
-<img src="https://th.bing.com/th/id/OIP.UJOqd6XHG9hWs9yZjE73aAAAAA?rs=1&pid=ImgDetMain" alt="Cincinnati" class="center">
 <div class="link"> 
 <a  href='https://www.uc.edu/campus-life/campus-rec.html' >University of Cincinnati Recreation Center Website</a>
 </div>
