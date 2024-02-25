@@ -10,7 +10,7 @@
             height: 250px;
             font-size: 35px;
             font-weight: bold;
-            margin: 25px;
+            margin: 15px;
             margin-top: 5px;
             font-family: Garamond, sans-serif;
             background-image: url(bball.jpg); 
@@ -86,6 +86,12 @@
 
         p{
             font-weight: bold;
+        }
+
+        .bottom-buttons-container {
+            display: flex;
+            justify-content: center;
+            margin-top: 20px; 
         }
 
         .bottom-button-left {
@@ -330,10 +336,10 @@
         <div id="circleDisplay5" class="circle"></div>
         <button id="myButton" class="button" onclick="toggleHiddenWindow(5)">F</button>
     </div>
-    <c1>
+    <div class ="bottom-buttons-container">
         <button class="bottom-button-left" onclick="openAll()">Open All</button>
         <button class="bottom-button-right" onclick="closeAll()">Close All</button>
-    </c1>
+    </div>
 </div>
 
 <!-- Hidden windows -->
