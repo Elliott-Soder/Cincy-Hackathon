@@ -86,7 +86,7 @@
 <body>
     <h1>Who Got Next?</h1>
     <div class="container">
-        <button class="button">Continue as Guest</button> <br>
+        <button class="button" onclick="clickedGuest()">Continue as Guest</button> <br>
         <p>
             OR
         </p> <br>
@@ -102,13 +102,18 @@
             var input = document.getElementById('inputString').value;
             var output = document.getElementById('output');
             password = "johnnyappleseed";
+            let adminPage = "admin.html";
 
-            if (input == password){
-                output.innerHTML = "Correct!";
+            if (input != password){
+                output.innerHTML = "Incorrect Access Code";
             } else {
-                output.innerHTML = "Wrong!";
+                window.location.href = adminPage;
             }
-            
+        }
+
+        function clickedGuest() {
+            let memberPage = "client.html";
+            window.location.href = memberPage;
         }
     </script>
 </body>
