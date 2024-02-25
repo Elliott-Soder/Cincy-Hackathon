@@ -48,7 +48,7 @@
             left: 50%;
             transform: translate(-50%, -50%);
             width: 200px;
-            height: 215px;
+            height: 240px;
             background-color: white;
             border: 2px solid black;
             z-index: 9999; 
@@ -89,6 +89,7 @@
         }
 
         .bottom-button-left {
+            font-family: Garamond, sans-serif;
             position: fixed;
             bottom: 20px; 
             left: 50%;
@@ -100,9 +101,12 @@
             border: 2px solid black;
             border-radius: 5px;
             cursor: pointer;
+            font-weight: bold;
         }
 
         .bottom-button-right {
+            font-family: Garamond, sans-serif;
+            font-weight: bold;
             position: fixed;
             bottom: 20px; 
             left: 50%;
@@ -159,8 +163,21 @@
         .mod-button{
             display: none;
             text-align: center;
-            width: 100px;
-            height: 25px;
+            width: 200px;
+            height: 30px;
+            font-size: 18px;
+            margin-top: 0px;
+            font-family: Garamond, sans-serif;
+            font-weight: bold;
+            background-color: lightgoldenrodyellow;
+        }
+
+        .option-button{
+            text-align: center;
+            width: 200px;
+            height: 30px;
+            font-size: 18px;
+            margin-top: 0px;
             font-family: Garamond, sans-serif;
             font-weight: bold;
             background-color: lightgoldenrodyellow;
@@ -221,16 +238,17 @@
             toggleModHiddenWindow(buttonId)
             leavingTeam(buttonId)
             
-            while (playersAhead[index] < 10) {
+            if (playersAhead[buttonId] < 10){
                 hideModerate(buttonId)
             }
+            
+        
         }
 
         function leavingTeam(index){
             playersAhead[index] -= 5;
             changeColor(index)
             document.getElementById('playersAhead' + index).innerText = "Players Ahead: " + playersAhead[index];
-            hideModerate(index)
         }
 
 
@@ -325,12 +343,12 @@
     </h3>
     <h2>Queue A:</h2>
     <p id="playersAhead0">Players Ahead: 0</p>
-    <button onclick="incrementPlayersAhead(0)" style="margin-bottom: 7px;">Increment Players</button>
+    <button class="option-button" onclick="incrementPlayersAhead(0)" style="margin-bottom: 7px;">Increment Players</button>
     <div>
-        <button onclick="clearQueue(0)" style="margin-bottom: 7px;">Clear</button>
+        <button class="option-button" onclick="clearQueue(0)" style="margin-bottom: 7px;">Clear</button>
     </div>
     <div>
-        <button onclick="availability(0)" style="margin-bottom: 7px">Close Court</button>
+        <button class="option-button" onclick="availability(0)" style="margin-bottom: 7px">Close Court</button>
     </div>
     <div>
         <button id="moderateButton0" class="mod-button" onclick="toggleModHiddenWindow(0)">Moderate</button>
@@ -353,12 +371,12 @@
     </h3>
     <h2>Queue B:</h2>
     <p id="playersAhead1">Players Ahead: 0</p>
-    <button onclick="incrementPlayersAhead(1)" style="margin-bottom: 7px;">Increment Players</button>
+    <button class="option-button" onclick="incrementPlayersAhead(1)" style="margin-bottom: 7px;">Increment Players</button>
     <div>
-        <button onclick="clearQueue(1)" style="margin-bottom: 7px;">Clear</button>
+        <button class="option-button" onclick="clearQueue(1)" style="margin-bottom: 7px;">Clear</button>
     </div>
     <div>
-        <button onclick="availability(1)"style="margin-bottom: 7px">Close Court</button>
+        <button class="option-button" onclick="availability(1)"style="margin-bottom: 7px">Close Court</button>
     </div>
     <div>
         <button id="moderateButton1" class="mod-button" onclick="toggleModHiddenWindow(1)">Moderate</button>
@@ -380,12 +398,12 @@
     </h3>
     <h2>Queue C:</h2>
     <p id="playersAhead2">Players Ahead: 0</p>
-    <button onclick="incrementPlayersAhead(2)" style="margin-bottom: 7px;">Increment Players</button>
+    <button class="option-button" onclick="incrementPlayersAhead(2)" style="margin-bottom: 7px;">Increment Players</button>
     <div>
-        <button onclick="clearQueue(2)" style="margin-bottom: 7px;">Clear</button>
+        <button class="option-button" onclick="clearQueue(2)" style="margin-bottom: 7px;">Clear</button>
     </div>
     <div>
-        <button onclick="availability(2)"style="margin-bottom: 7px">Close Court</button>
+        <button class="option-button" onclick="availability(2)"style="margin-bottom: 7px">Close Court</button>
     </div>
     <div>
         <button id="moderateButton2" class="mod-button" onclick="toggleModHiddenWindow(2)">Moderate</button>
@@ -407,12 +425,12 @@
     </h3>
     <h2>Queue D:</h2>
     <p id="playersAhead3">Players Ahead: 0</p>
-    <button onclick="incrementPlayersAhead(3)" style="margin-bottom: 7px;">Increment Players</button>
+    <button class="option-button" onclick="incrementPlayersAhead(3)" style="margin-bottom: 7px;">Increment Players</button>
     <div>
-        <button onclick="clearQueue(3)" style="margin-bottom: 7px;">Clear</button>
+        <button class="option-button" onclick="clearQueue(3)" style="margin-bottom: 7px;">Clear</button>
     </div>
     <div>
-        <button onclick="availability(3)"style="margin-bottom: 7px">Close Court</button>
+        <button class="option-button" onclick="availability(3)"style="margin-bottom: 7px">Close Court</button>
     </div>
     <div>
         <button id="moderateButton3" class="mod-button" onclick="toggleModHiddenWindow(3)">Moderate</button>
@@ -434,12 +452,12 @@
     </h3>
     <h2>Queue E:</h2>
     <p id="playersAhead4">Players Ahead: 0</p>
-    <button onclick="incrementPlayersAhead(4)" style="margin-bottom: 7px;">Increment Players</button>
+    <button class="option-button" onclick="incrementPlayersAhead(4)" style="margin-bottom: 7px;">Increment Players</button>
     <div>
-        <button onclick="clearQueue(4)" style="margin-bottom: 7px;">Clear</button>
+        <button class="option-button" onclick="clearQueue(4)" style="margin-bottom: 7px;">Clear</button>
     </div>
     <div>
-        <button onclick="availability(4)"style="margin-bottom: 7px">Close Court</button>
+        <button class="option-button" onclick="availability(4)"style="margin-bottom: 7px">Close Court</button>
     </div>
     <div>
         <button id="moderateButton4" class="mod-button" onclick="toggleModHiddenWindow(4)">Moderate</button>
@@ -461,12 +479,12 @@
     </h3>
     <h2>Queue F:</h2>
     <p id="playersAhead5">Players Ahead: 0</p>
-    <button onclick="incrementPlayersAhead(5)" style="margin-bottom: 7px;">Increment Players</button>
+    <button class="option-button" onclick="incrementPlayersAhead(5)" style="margin-bottom: 7px;">Increment Players</button>
     <div>
-        <button onclick="clearQueue(5)" style="margin-bottom: 7px;">Clear</button>
+        <button class="option-button" onclick="clearQueue(5)" style="margin-bottom: 7px;">Clear</button>
     </div>
     <div>
-        <button onclick="availability(5)"style="margin-bottom: 7px">Close Court</button>
+        <button class="option-button" onclick="availability(5)"style="margin-bottom: 7px">Close Court</button>
     </div>
     <div>
         <button id="moderateButton5" class="mod-button" onclick="toggleModHiddenWindow(5)">Moderate</button>
