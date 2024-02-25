@@ -172,8 +172,8 @@
         function availability(index){
             colors[index] = "grey";
             playersAhead[index] = 0;
-            let closeCourtButton = document.getElementById("closeCourtButton");
-            let openCourtButton = document.getElementById("openCourtButton");
+            let closeCourtButton = document.getElementById("closeCourtButton" + index);
+            let openCourtButton = document.getElementById("openCourtButton" + index);
 
             document.getElementById('playersAhead' + index).innerText = "Players Ahead: " + playersAhead[index];
             document.getElementById('circleDisplay' + index).className = "circle " + colors[index];
@@ -188,10 +188,10 @@
         }
 
         function reUpAvailability(index){
-            let closeCourtButton = document.getElementById("closeCourtButton");
-            let openCourtButton = document.getElementById("openCourtButton");
+            let closeCourtButton = document.getElementById("closeCourtButton" + index);
+            let openCourtButton = document.getElementById("openCourtButton" + index);
 
-            if (closeCourtButton.style.display == "none") {
+            if (closeCourtButton.style.display === "none") {
                 closeCourtButton.style.display = "inline-block";
                 openCourtButton.style.display = "none";
             } else {
@@ -224,7 +224,7 @@
 </head>
 <body>
 
-<h1> Select A Court! </h1>
+<h1> Who Got Next? </h1>
 
 <!-- Display the circles -->
 <div class="button-container">
@@ -270,10 +270,10 @@
         <button onclick="clearQueue(0)" style="margin-bottom: 7px;">Clear Queue</button>
     </div>
     <div>
-        <button id="closeCourtButton" onclick="availability(0)">Close Court</button>
+        <button id="closeCourtButton0" onclick="availability(0)">Close Court</button>
     </div>
     <div>
-        <button id="openCourtButton" style="display: none;" onclick="reUpAvailability(0)">Open Court</button>
+        <button id="openCourtButton0" style="display: none;" onclick="reUpAvailability(0)">Open Court</button>
     </div>
 </div>
 
@@ -288,10 +288,10 @@
         <button onclick="clearQueue(1)" style="margin-bottom: 7px;">Clear Queue</button>
     </div>
     <div>
-        <button id="closeCourtButton" onclick="availability(1)">Close Court</button>
+        <button id="closeCourtButton1" onclick="availability(1)">Close Court</button>
     </div>
     <div>
-        <button id="openCourtButton" style="display: none;" onclick="reUpAvailability(1)">Open Court</button>
+        <button id="openCourtButton1" style="display: none;" onclick="reUpAvailability(1)">Open Court</button>
     </div>
 </div>
 
@@ -306,10 +306,10 @@
         <button onclick="clearQueue(2)" style="margin-bottom: 7px;">Close Queue</button>
     </div>
     <div>
-        <button id="closeCourtButton" onclick="availability(2)">Open Court</button>
+        <button id="closeCourtButton2" onclick="availability(2)">Close Court</button>
     </div>
     <div>
-        <button id="openCourtButton" style="display: none;" onclick="reUpAvailability(2)">Open Court</button>
+        <button id="openCourtButton2" style="display: none;" onclick="reUpAvailability(2)">Open Court</button>
     </div>
 </div>
 
@@ -324,10 +324,10 @@
         <button onclick="clearQueue(3)" style="margin-bottom: 7px;">Clear Queue</button>
     </div>
     <div>
-        <button id="closeCourtButton" onclick="availability(3)">Close Court</button>
+        <button id="closeCourtButton3" onclick="availability(3)">Close Court</button>
     </div>
     <div>
-        <button id="openCourtButton" style="display: none;" onclick="reUpAvailability(3)">Open Court</button>
+        <button id="openCourtButton3" style="display: none;" onclick="reUpAvailability(3)">Open Court</button>
     </div>
 </div>
 
@@ -342,10 +342,10 @@
         <button onclick="clearQueue(4)" style="margin-bottom: 7px;">Clear Queue</button>
     </div>
     <div>
-        <button id="closeCourtButton" onclick="availability(4)">Close Court</button>
+        <button id="closeCourtButton4" onclick="availability(4)">Close Court</button>
     </div>
     <div>
-        <button id="openCourtButton" style="display: none;" onclick="reUpAvailability(4)">Open Court</button>
+        <button id="openCourtButton4" style="display: none;" onclick="reUpAvailability(4)">Open Court</button>
     </div>
 </div>
 
@@ -360,10 +360,10 @@
         <button onclick="clearQueue(5)" style="margin-bottom: 7px;">Clear Queue</button>
     </div>
     <div>
-        <button id="closeCourtButton" onclick="availability(5)">Close Court</button>
+        <button id="closeCourtButton5" onclick="availability(5)">Close Court</button>
     </div>
     <div>
-        <button id="openCourtButton" style="display: none;" onclick="reUpAvailability(5)">Open Court</button>
+        <button id="openCourtButton5" style="display: none;" onclick="reUpAvailability(5)">Open Court</button>
     </div>
 </div>
 
