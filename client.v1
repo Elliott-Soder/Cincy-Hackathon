@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Who Got Next?</title>
+    <style>
+        .button {
+            text-align: center;
+            justify-content: right;
+            width: 250px;
+            height: 500px;
+            font-size: 24px;
+            margin: 60px;
+            font-family: Garamond, sans-serif;
+        }
+        .button-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            justify-content: bottom;
+            font-family: Garamond, sans-serif;
+            margin: 50px;
+        }
+        .circle {
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            margin-top: 5px;
+            border: 2px solid black; 
+            background-color: green;
+        }
+        .hidden-window {
+            display: none; /* Initially hidden */
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 200px;
+            height: 175px;
+            background-color: white;
+            border: 2px solid black;
+            z-index: 9999; /* Ensure it appears above other content */
+            padding: 20px;
+            text-align: center;
+            
+            font-family: Garamond, sans-serif;
+        }
+        .green { background-color: green; }
+        .blue { background-color: blue; }
+        .yellow { background-color: yellow; }
+        .grey { background-color: grey;}
+
+        .header {
+            padding: 40px;
+            text-align: center;
+            background: #bc271a;
+            color: rgb(1, 1, 1);
+            font-size: 30px;
+            font-family: Garamond, sans-serif
+        }
+        
+        .header_2 {
+            padding: 40px;
+            text-align: center;
+            color: rgb(1, 1, 1);
+            font-size: 30px;
+        }
+
+        .img {
+            display: block;
+            margin-left: auto;
+            margin-right: auto;
+            width: 50%;
+            }
+
+        .link {
+            font-family: Garamond, sans-serif;
+            text-align: center;
+        }
+
+    </style>
+    <script>
+        // Define an array of colors
+        var colors = ["green", "green", "green", "green", "green", "green"];
+
+        // Define an array to store players ahead for each court
+        var playersAhead = [0, 0, 0, 0, 0, 0];
+
+        // Function to change the color of the circle
+        function changeColor(index) {
+            if (playersAhead[index] <= 5) {
+                colors[index] = "yellow";
+            } else if (playersAhead[index] > 5) {
+                colors[index] = "blue";
+            } else {
+                colors[index] = "green";
+            }
+            document.getElementById('circleDisplay' + index).className = "circle " + colors[index];
+        }
+        
+        x = 1;
+        // Function to add yourself to the queue
+        function incrementPlayersAhead(index) {
+            x - 1;
+            if(x=0){
+            playersAhead[index]++;
+            changeColor(index);
+            document.getElementById('playersAhead' + index).innerText = "Players Ahead: " + playersAhead[index];
+        }
+    }
+
+        // Function to remove yourself from queue
+        function incrementPlayersAhead(index) {
+            x + 1;
+            if(x=1){
+            playersAhead[index]--;
+            changeColor(index);
+            document.getElementById('playersAhead' + index).innerText = "Players Ahead: " + playersAhead[index];
+            }
+        }
+
+
+        // Function to toggle the visibility of the hidden window associated with the button
+        function toggleHiddenWindow(buttonId) {
+            var hiddenWindow = document.getElementById("hiddenWindow" + buttonId);
+            if (hiddenWindow.style.display === "none") {
+                hiddenWindow.style.display = "block"; // Show the window
+            } else {
+                hiddenWindow.style.display = "none"; // Hide the window
+            }
+        }
+
+        
+        
+        
+
+
+    </script>
+</head>
+<body>
+
+    
+    <!-- Header -->
+          
+        
+    <div class="header">
+
+    <h1>Who Got Next?</h1> 
+    
+    </div>
+   
+
+<!-- Display the circles -->
+<div class="button-container">
+    <div>
+        <div id="circleDisplay0" class="circle"></div>
+        
+        <button class="button" onclick="toggleHiddenWindow(0)">Court 1</button>
+    
+    </div>
+    <div>
+        <div id="circleDisplay1" class="circle"></div>
+        <button class="button" onclick="toggleHiddenWindow(1)">Court 2</button>
+    </div>
+    <div>
+        <div id="circleDisplay2" class="circle"></div>
+        <button class="button" onclick="toggleHiddenWindow(2)">Court 3</button>
+    </div>
+    <div>
+        <div id="circleDisplay3" class="circle"></div>
+        <button class="button" onclick="toggleHiddenWindow(3)">Court 4</button>
+    </div>
+    <div>
+        <div id="circleDisplay4" class="circle"></div>
+        <button class="button" onclick="toggleHiddenWindow(4)">Court 5</button>
+    </div>
+    <div>
+        <div id="circleDisplay5" class="circle"></div>
+        <button class="button" onclick="toggleHiddenWindow(5)">Court 6</button>
+    </div>
+</div>
+
+
+<!-- Hidden windows -->
+<div id="hiddenWindow0" class="hidden-window" >
+    <h3>
+        <button onclick="toggleHiddenWindow(0)">X</button>
+    </h3>
+    <h2>Queue 1</h2>
+    <p id="playersAhead0">Players Ahead: 0</p>
+    <button onclick="incrementPlayersAhead(0)">Increment Players</button>
+    <button onclick="clearQueue(0)">Leave Queue</button>
+    
+</div>
+
+<div id="hiddenWindow1" class="hidden-window">
+    <h3>
+        <button onclick="toggleHiddenWindow(1)">X</button>
+    </h3>
+    <h2>Queue 2</h2>
+    <p id="playersAhead1">Players Ahead: 0</p>
+    <button onclick="incrementPlayersAhead(1)">Increment Players</button>
+    <button onclick="clearQueue(1)">Leave Queue</button>
+</div>
+
+<div id="hiddenWindow2" class="hidden-window">
+    <h3>
+        <button onclick="toggleHiddenWindow(2)">X</button>
+    </h3>
+    <h2>Queue 3</h2>
+    <p id="playersAhead2">Players Ahead: 0</p>
+    <button onclick="incrementPlayersAhead(2)">Increment Players</button>
+    <button onclick="clearQueue(2)">Leave Queue</button>
+</div>
+
+<div id="hiddenWindow3" class="hidden-window">
+    <h3>
+        <button onclick="toggleHiddenWindow(3)">X</button>
+    </h3>
+    <h2>Queue 4</h2>
+    <p id="playersAhead3">Players Ahead: 0</p>
+    <button onclick="incrementPlayersAhead(3)">Increment Players</button>
+    <button onclick="clearQueue(3)">Leave Queue</button>
+</div>
+
+<div id="hiddenWindow4" class="hidden-window">
+    <h3>
+        <button onclick="toggleHiddenWindow(4)">X</button>
+    </h3>
+    <h2>Queue 5</h2>
+    <p id="playersAhead4">Players Ahead: 0</p>
+    <button onclick="incrementPlayersAhead(4)">Increment Players</button>
+    <button onclick="clearQueue(4)">Leave Queue</button>
+</div>
+
+<div id="hiddenWindow5" class="hidden-window">
+    <h3>
+        <button onclick="toggleHiddenWindow(5)">X</button>
+    </h3>
+    <h2>Queue 6</h2>
+    <p id="playersAhead5">Players Ahead: 0</p>
+    <button onclick="incrementPlayersAhead(5)">Increment Players</button>
+    <button onclick="clearQueue(5)">Leave Queue</button>
+</div>
+<img src="https://th.bing.com/th/id/OIP.UJOqd6XHG9hWs9yZjE73aAAAAA?rs=1&pid=ImgDetMain" alt="Cincinnati" class="center">
+<div class="link"> 
+<a  href='https://www.uc.edu/campus-life/campus-rec.html' >University of Cincinnati Recreation Center Website</a>
+</div>
+</body>
+</html>
