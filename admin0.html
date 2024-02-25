@@ -24,6 +24,9 @@
             border: 2px solid black;
 
         }
+        .button:hover {
+            border: 5px solid black;
+        }
         .button-container {
             display: flex;
             flex-wrap: wrap;
@@ -63,6 +66,62 @@
             font-size: 40px;
             font-weight: bold;
             margin-bottom: 10px;
+        }
+
+        h2 {
+            
+            font-family: Garamond, sans-serif;
+            font-size: 30px;
+            margin-top: 1px;
+            margin-bottom: 10px;
+
+        }
+
+        h3 {
+
+            margin-top: 0px;
+            margin-left: 180px;
+            margin-bottom: 0px;
+        }
+
+        p {
+            font-weight: bold;
+        }
+
+        .bottom-button-left {
+            position: fixed;
+            bottom: 20px; 
+            left: 50%;
+            transform: translateX(10%);
+            font-size: 16px;
+            padding: 10px 20px;
+            background-color: rgba(224, 161, 66, 0.288);
+            color: black;
+            border: 2px solid black;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .bottom-button-right {
+            position: fixed;
+            bottom: 20px; 
+            left: 50%;
+            transform: translateX(-110%);
+            font-size: 16px;
+            padding: 10px 20px;
+            background-color: rgba(224, 161, 66, 0.288);
+            color: black;
+            border: 2px solid black;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .bottom-button-left:hover{
+            border: 3px solid black;
+        }
+
+        .bottom-button-right:hover{
+            border: 3px solid black;
         }
         
     </style>
@@ -143,6 +202,24 @@
             clearQueue(index);
         }
 
+        function openAll(){
+            changeColor(0);
+            changeColor(1);
+            changeColor(2);
+            changeColor(3);
+            changeColor(4);
+            changeColor(5);
+        }
+
+        function closeAll(){
+            availability(0);
+            availability(1);
+            availability(2);
+            availability(3);
+            availability(4);
+            availability(5);
+        }
+
     </script>
 </head>
 <body>
@@ -175,6 +252,10 @@
         <div id="circleDisplay5" class="circle"></div>
         <button class="button" onclick="toggleHiddenWindow(5)">F</button>
     </div>
+    <c1>
+        <button class="bottom-button-left" onclick="openAll()">Open All</button>
+        <button class="bottom-button-right" onclick="closeAll()">Close All</button>
+    </c1>
 </div>
 
 <!-- Hidden windows -->
