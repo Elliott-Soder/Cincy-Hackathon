@@ -87,6 +87,43 @@
         p{
             font-weight: bold;
         }
+
+        .bottom-button-left {
+            position: fixed;
+            bottom: 20px; 
+            left: 50%;
+            transform: translateX(10%);
+            font-size: 16px;
+            padding: 10px 20px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .bottom-button-right {
+            position: fixed;
+            bottom: 20px; 
+            left: 50%;
+            transform: translateX(-110%);
+            font-size: 16px;
+            padding: 10px 20px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .bottom-button-left:hover{
+            border: 2px solid black;
+        }
+
+        .bottom-button-right:hover{
+            border: 2px solid black;
+        }
+
         
     </style>
     <script>
@@ -118,11 +155,11 @@
         // Function to toggle the visibility of the hidden window associated with the button
         function toggleHiddenWindow(buttonId) {
             var hiddenWindow = document.getElementById("hiddenWindow" + buttonId);
-            if (hiddenWindow.style.display === "none") {
-                hiddenWindow.style.display = "block"; // Show the window
-            } else {
-                hiddenWindow.style.display = "none"; // Hide the window
-            }
+                if (hiddenWindow.style.display === "none") {
+                    hiddenWindow.style.display = "block"; // Show the window
+                } else {
+                    hiddenWindow.style.display = "none"; // Hide the window
+                }
         }
 
         // Clears Current Queue
@@ -140,6 +177,24 @@
             document.getElementById('circleDisplay' + index).className = "circle " + colors[index];
         }
 
+        function openAll(){
+            changeColor(0);
+            changeColor(1);
+            changeColor(2);
+            changeColor(3);
+            changeColor(4);
+            changeColor(5);
+        }
+
+        function closeAll(){
+            availability(0);
+            availability(1);
+            availability(2);
+            availability(3);
+            availability(4);
+            availability(5);
+        }
+
     </script>
 </head>
 <body>
@@ -154,24 +209,28 @@
     </div>
     <div>
         <div id="circleDisplay1" class="circle"></div>
-        <button class="button" onclick="toggleHiddenWindow(1)">B</button>
+        <button id="myButton" class="button" onclick="toggleHiddenWindow(1)">B</button>
     </div>
     <div>
         <div id="circleDisplay2" class="circle"></div>
-        <button class="button" onclick="toggleHiddenWindow(2)">C</button>
+        <button id="myButton" class="button" onclick="toggleHiddenWindow(2)">C</button>
     </div>
     <div>
         <div id="circleDisplay3" class="circle"></div>
-        <button class="button" onclick="toggleHiddenWindow(3)">D</button>
+        <button id="myButton" class="button" onclick="toggleHiddenWindow(3)">D</button>
     </div>
     <div>
         <div id="circleDisplay4" class="circle"></div>
-        <button class="button" onclick="toggleHiddenWindow(4)">E</button>
+        <button id="myButton" class="button" onclick="toggleHiddenWindow(4)">E</button>
     </div>
     <div>
         <div id="circleDisplay5" class="circle"></div>
-        <button class="button" onclick="toggleHiddenWindow(5)">F</button>
+        <button id="myButton" class="button" onclick="toggleHiddenWindow(5)">F</button>
     </div>
+    <c1>
+        <button class="bottom-button-left" onclick="openAll()">Open All</button>
+        <button class="bottom-button-right" onclick="closeAll()">Close All</button>
+    </c1>
 </div>
 
 <!-- Hidden windows -->
