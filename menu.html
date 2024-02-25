@@ -8,10 +8,17 @@
         body {
             font-family: Garamond, sans-serif;
             text-align: center;
+            background-image: url(hack.jpeg);
+            background-repeat: no-repeat;
+            background-size: cover;
+            background-attachment: fixed; 
+            background-size: 100% 100%;
         }
         h1 {
             margin-top: 200px;
-            color: black;
+            color: white;
+            -webkit-text-stroke-width: 1.25px;
+            -webkit-text-stroke-color: black;
             font-family: Garamond, sans-serif;
             font-size: 60px;
             margin-bottom: 50px;
@@ -58,6 +65,7 @@
             border: 1px solid #ccc;
             border-radius: 5px;
             width: 200px;
+            margin-bottom: 30px;
         }
         .input-submit {
             padding: 10px 20px;
@@ -78,8 +86,11 @@
         }
         p{
             font-weight: bold;
-            font-size: 20px;
+            font-size: 23px;
             margin-bottom: 5px;
+            -webkit-text-stroke-width: 1.1px;
+            -webkit-text-stroke-color: black;
+            color: white;
         }
     </style>
 </head>
@@ -103,17 +114,17 @@
             var output = document.getElementById('output');
             password = "johnnyappleseed";
 
-            let adminpage = "adminPage.html";
+            let adminPage = "update2.html";
 
             if (input != password){
-                output.innerHTML = "Incorrect Access Code";
+                output.innerHTML = "<span style='color: white; '>ACCESS DENIED</span>";
             } else {
-                window.location.href = adminpage;
+                window.location.href = adminPage;
             }
         }
 
         function clickedGuest() {
-            let memberPage = "clientPage.html";
+            let memberPage = "client.html";
             window.location.href = memberPage;
         }
     </script>
