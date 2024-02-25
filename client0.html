@@ -102,22 +102,36 @@
         
         // Function to add yourself to the queue
         function incrementPlayersAhead(index) {
-        
-            
+            let closeCourtButton = document.getElementById("addPlayer" + index);
+            let openCourtButton = document.getElementById("removePlayer" + index);
             playersAhead[index]++;
+            changeColor(index);
+            document.getElementById('playersAhead' + index).innerText = "Players Ahead: " + playersAhead[index];
+            if (addPlayer.style.display === "none") {
+                addPlayer.style.display = "inline-block";
+                removePlayer.style.display = "none";
+            } else {
+                addPlayer.style.display = "none";
+                removePlayer.style.display = "inline-block";
+            }
+        }
+
+        // Function to remove yourself fromthe queue
+        function clearQueue(index) {
+            if (addPlayer.style.display === "none") {
+                addPlayer.style.display = "inline-block";
+                removePlayer.style.display = "none";
+            } else {
+                addPlayer.style.display = "none";
+                removePlayer.style.display = "inline-block";
+            }
+            playersAhead[index]--;
             changeColor(index);
             document.getElementById('playersAhead' + index).innerText = "Players Ahead: " + playersAhead[index];
         }
     
 
-        // Function to remove yourself from queue
-        function clearQueue(index) {
-            
-            
-            playersAhead[index]--;
-            changeColor(index);
-            document.getElementById('playersAhead' + index).innerText = "Players Ahead: " + playersAhead[index];
-            }
+        
         
 
 
@@ -189,8 +203,8 @@
     </h3>
     <h2>Queue 1</h2>
     <p id="playersAhead0">Players Ahead: 0</p>
-    <button onclick="incrementPlayersAhead(0)">Increment Players</button>
-    <button onclick="clearQueue(0)">Leave Queue</button>
+    <button id="addPlayer0" onclick="incrementPlayersAhead(0)">Join Queue</button>
+    <button id="removePlayeronclick0" onclick="clearQueue(0)">Leave Queue</button>
     
 </div>
 
@@ -200,8 +214,8 @@
     </h3>
     <h2>Queue 2</h2>
     <p id="playersAhead1">Players Ahead: 0</p>
-    <button onclick="incrementPlayersAhead(1)">Increment Players</button>
-    <button onclick="clearQueue(1)">Leave Queue</button>
+    <button id="addPlayer1" onclick="incrementPlayersAhead(1)">Join Queue</button>
+    <button id="removePlayer1" onclick="clearQueue(1)">Leave Queue</button>
 </div>
 
 <div id="hiddenWindow2" class="hidden-window">
@@ -210,8 +224,8 @@
     </h3>
     <h2>Queue 3</h2>
     <p id="playersAhead2">Players Ahead: 0</p>
-    <button onclick="incrementPlayersAhead(2)">Increment Players</button>
-    <button onclick="clearQueue(2)">Leave Queue</button>
+    <button id="addPlayer2" onclick="incrementPlayersAhead(2)">Join Queue</button>
+    <button id="removePlayer2" onclick="clearQueue(2)">Leave Queue</button>
 </div>
 
 <div id="hiddenWindow3" class="hidden-window">
@@ -220,8 +234,8 @@
     </h3>
     <h2>Queue 4</h2>
     <p id="playersAhead3">Players Ahead: 0</p>
-    <button onclick="incrementPlayersAhead(3)">Increment Players</button>
-    <button onclick="clearQueue(3)">Leave Queue</button>
+    <button id="addPlayer3" onclick="incrementPlayersAhead(3)">Join Queue</button>
+    <button id="removePlayer3" onclick="clearQueue(3)">Leave Queue</button>
 </div>
 
 <div id="hiddenWindow4" class="hidden-window">
@@ -230,8 +244,8 @@
     </h3>
     <h2>Queue 5</h2>
     <p id="playersAhead4">Players Ahead: 0</p>
-    <button onclick="incrementPlayersAhead(4)">Increment Players</button>
-    <button onclick="clearQueue(4)">Leave Queue</button>
+    <button id="addPlayer4" onclick="incrementPlayersAhead(4)">Join Queue</button>
+    <button id="removePlayer4" onclick="clearQueue(4)">Leave Queue</button>
 </div>
 
 <div id="hiddenWindow5" class="hidden-window">
@@ -240,8 +254,8 @@
     </h3>
     <h2>Queue 6</h2>
     <p id="playersAhead5">Players Ahead: 0</p>
-    <button onclick="incrementPlayersAhead(5)">Increment Players</button>
-    <button onclick="clearQueue(5)">Leave Queue</button>
+    <button id="addPlayer5" onclick="incrementPlayersAhead(5)">Join Queue</button>
+    <button id="removePlayer5" onclick="clearQueue(5)">Leave Queue</button>
 </div>
 <img src="https://th.bing.com/th/id/OIP.UJOqd6XHG9hWs9yZjE73aAAAAA?rs=1&pid=ImgDetMain" alt="Cincinnati" class="center">
 <div class="link"> 
